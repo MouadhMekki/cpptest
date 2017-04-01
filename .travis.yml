@@ -3,6 +3,9 @@
 
 language: cpp
 
+# for recent abi-compliance-checker
+dist: trusty
+
 script:
   - cd cpptest
   - ./autogen.sh
@@ -10,8 +13,10 @@ script:
   - make
   - make check
   - make distcheck
+  - ./check-abi.sh
 
 addons:
   apt:
     packages:
+    - abi-compliance-checker
     - doxygen
